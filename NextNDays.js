@@ -45,6 +45,28 @@ function nextNDays(y, m, d, n) {
   d = parseInt(d);
   n = parseInt(n);
   let day;
+  //优化大于一年的速度
+
+  if(m == 1 && d == 1) {
+    while(n > 365){
+      if(!!isLeapYear(y) == true) {
+        n = n - 366;
+        y++;
+      }else{
+        n = n - 365;
+        y++;
+      }
+    }
+    while(n < -365){
+      if(!!isLeapYear(y - 1) == true) {
+        n = n + 366;
+        y--;
+      }else{
+        n = n + 365;
+        y--;
+      }
+    }
+  }
   if (n > 0) {
     n += (d - 1);
     d = 1;
@@ -88,7 +110,8 @@ function isLeapYear(y) {
 }
 
 // try {
-//     console.log(nextNDays(2017, 11, 1, 30));
+//     // console.log(nextNDays(2017, 11, 1, 30));
+//     console.log(nextNDays(1582, 10, 15, -1));
 //     // console.log(/^-?[1-9]\d*$/.test(30));
 // } catch (e){
 //     console.log(e);
