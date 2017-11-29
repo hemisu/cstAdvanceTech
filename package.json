@@ -1,10 +1,11 @@
 {
-  "name": "homework",
+  "name": "hekunyu",
   "version": "1.0.0",
   "description": "",
   "main": "next_n_days.js",
   "scripts": {
-    "test": "istanbul cover _mocha -- NextNDays.test.js --reporter mochawesome "
+    "test": "istanbul cover _mocha -- NextNDays.test.js --reporter mochawesome",
+    "report": "npm run test > log && node report.js"
   },
   "author": "",
   "license": "ISC",
